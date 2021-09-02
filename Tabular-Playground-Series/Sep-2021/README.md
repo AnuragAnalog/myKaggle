@@ -6,8 +6,8 @@ For this competition, you will predict whether a customer made a `claim` upon an
 
 ### Files
 
-* train.csv - the training data with the target claim column
-* test.csv - the test set; you will be predicting the claim for each row in this file
+* train.csv - the training data with the target `claim` column
+* test.csv - the test set; you will be predicting the `claim` for each row in this file
 * sample_submission.csv - a sample submission file in the correct format
 
 **Kaggle Download API Command**
