@@ -18,4 +18,4 @@ def majority(dir_path, target_col, high, id_col='id'):
     return merged_output[target_col].reset_index()
 
 if __name__ == '__main__':
-    majority('./Sep-2021', 'claim', './Sep-2021/output_xgb.csv').to_csv('output.csv', index=False)
+    majority('./Sep-2021', 'claim', './Sep-2021/output_xgb_500.csv').to_csv('output.csv', index=False)
