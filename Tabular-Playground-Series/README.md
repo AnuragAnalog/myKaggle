@@ -2,12 +2,6 @@
 
 These are the kaggle Tabular Playground Series which I have participated in.
 
-## July 2021
-
-## August 2021
-
-## September 2021
-
 ### Prizes
 
 * 1st Place - Choice of Kaggle merchandise
