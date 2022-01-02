@@ -14,7 +14,7 @@ def objective_rf(trial):
     params['bootstrap'] = trial.suggest_categorical('bootstrap', [True, False])
 
     model = RandomForestRegressor(**params, n_jobs=-1)
-    model.fit(model.predict(X_train), y_train)
+    model.fit(X_train, y_train)
 
     return mean_squared_error(model.predict(X_valid), y_valid, squared=False)
 ```
@@ -33,7 +33,7 @@ def objective_xgb(trial):
     params['silent'] = True
 
     model = XGBRegressor(**params, n_jobs=-1)
-    model.fit(model.predict(X_train), y_train)
+    model.fit(X_train, y_train)
 
     return mean_squared_error(model.predict(X_valid), y_valid, squared=False)
 ```
@@ -52,7 +52,7 @@ def objective_lgb(trial):
     params['silent'] = True
 
     model = LGBMRegressor(**params, n_jobs=-1)
-    model.fit(model.predict(X_train), y_train)
+    model.fit(X_train, y_train)
 
     return mean_squared_error(model.predict(X_valid), y_valid, squared=False)
 ```
@@ -70,7 +70,7 @@ def objective_cat(trial):
     params['eval_metric'] = 'RMSE'
 
     model = CatBoostRegressor(**params, n_jobs=-1)
-    model.fit(model.predict(X_train), y_train)
+    model.fit(X_train, y_train)
 
     return mean_squared_error(model.predict(X_valid), y_valid, squared=False)
 ```
@@ -86,7 +86,7 @@ def objective_knn(trial):
     params['p'] = trial.suggest_int('p', 1, 5, step=1)
 
     model = KNeighborsRegressor(**params, n_jobs=-1)
-    model.fit(model.predict(X_train), y_train)
+    model.fit(X_train, y_train)
 
     return mean_squared_error(model.predict(X_valid), y_valid, squared=False)
 ```
