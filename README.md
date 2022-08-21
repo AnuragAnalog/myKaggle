@@ -2,6 +2,30 @@
 
 ## Useful Snippets
 
+### Preprocessing
+**Extended Label Encoder**
+
+class LabelEncoderExt(TransformerMixin, BaseEstimator):
+    def __init__(self, classes=None):
+        self.classes = classes
+
+    def fit(self, y):
+        if self.classes is None:
+            self.classes = np.unique(y)
+
+        self.encoding = {k: v for v, k in enumerate(self.classes, start=0)}
+
+    def transform(self, y):
+        return y.map(self.encoding)
+
+    def fit_transform(self, y):
+        self.fit(y)
+
+        return self.transform(y)
+
+**Extended One Hot Encoder**
+
+
 **Memory Reduction**
 ```python3
 def reduce_memory_dataframe(df, verbose=True):
