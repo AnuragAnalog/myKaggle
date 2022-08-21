@@ -4,7 +4,7 @@
 
 ### Preprocessing
 **Extended Label Encoder**
-
+```python3
 class LabelEncoderExt(TransformerMixin, BaseEstimator):
     def __init__(self, classes=None):
         self.classes = classes
@@ -22,9 +22,29 @@ class LabelEncoderExt(TransformerMixin, BaseEstimator):
         self.fit(y)
 
         return self.transform(y)
+```
 
 **Extended One Hot Encoder**
+```python3
+class OneHotEncoderExt(TransformerMixin, BaseEstimator):
+    def __init__(self, categories=None):
+        self.categories = categories
 
+    def fit(self, y):
+        if self.categories is None:
+            self.categories = np.unique(y)
+        code = [1] + [0]*(len(self.categories)-1)
+
+        self.encoding = {k: np.roll(code, v) for v, k in enumerate(self.categories, start=0)}
+
+    def transform(self, y):
+        return y.map(self.encoding)
+
+    def fit_transform(self, y):
+        self.fit(y)
+
+        return self.transform(y)
+```
 
 **Memory Reduction**
 ```python3
